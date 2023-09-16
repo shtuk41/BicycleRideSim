@@ -65,6 +65,9 @@ bool parse_gpx_file(std::string &filePath, trip &tr)
 
 				rec.distanceMetersFromPreviousReceord = distanceKm * 1000.0f;
 				tr.IntegraeteDistanceMeters(rec.distanceMetersFromPreviousReceord);
+				tr.IntegrateElevationGainMeters(rec.elevationDelta > 0 ? rec.elevationDelta : 0.0);
+				tr.IntegrateElevationLossMeters(rec.elevationDelta < 0 ? rec.elevationDelta : 0.0);
+
 			}
 
 			prev_time = rec.timestamp;

@@ -19,6 +19,8 @@ TEST(TestCaseName, ParsingTest)
 	EXPECT_EQ(_trip.time_initial_point, "2023-09-10T16:13:06Z");
 	EXPECT_EQ(_trip.type, "cycling");
 	EXPECT_NEAR(_trip.GetIntegratedDistanceMeters(), 43327.7, 0.1);
-	EXPECT_NEAR(_trip.GetIntegratedTimeMilliseconds(), 5831000, 10.0);
+	EXPECT_EQ(_trip.GetIntegratedTimeMilliseconds(), 5831000);
+	EXPECT_NEAR(_trip.GetIntegratedElevationGainMeters(), 293, 1.0);
+	EXPECT_NEAR(_trip.GetIntegratedElevationLossMeters(), -294, 1.0);
 
 }

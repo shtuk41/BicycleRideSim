@@ -35,7 +35,9 @@ struct trip
 {
 private:
 	double integratedDistanceMeters;
-	double integratedTimeMilliseconds;
+	size_t integratedTimeMilliseconds;
+	double integratedElevationGainMeters;
+	double integratedElevationLossMeters;
 
 public:
 	std::vector<record> points;
@@ -43,9 +45,12 @@ public:
 	std::string time_initial_point;
 	std::string type;
 
-	trip() : integratedDistanceMeters(0), integratedTimeMilliseconds(0) {}
+	trip() : integratedDistanceMeters(0), 
+		integratedTimeMilliseconds(0),
+		integratedElevationGainMeters(0),
+		integratedElevationLossMeters(0) {}
 
-	void IntegrateTimeMilliseconds(double timeMs)
+	void IntegrateTimeMilliseconds(size_t timeMs)
 	{
 		integratedTimeMilliseconds += timeMs;
 	}
@@ -55,13 +60,33 @@ public:
 		integratedDistanceMeters += distanceM;
 	}
 
+	void IntegrateElevationGainMeters(double elev_delta)
+	{
+		integratedElevationGainMeters += elev_delta;
+	}
+
+	void IntegrateElevationLossMeters(double elev_delta)
+	{
+		integratedElevationLossMeters += elev_delta;
+	}
+
 	double GetIntegratedDistanceMeters() const
 	{
 		return integratedDistanceMeters;
 	}
 
-	double GetIntegratedTimeMilliseconds() const
+	size_t GetIntegratedTimeMilliseconds() const
 	{
 		return integratedTimeMilliseconds;
+	}
+
+	double GetIntegratedElevationGainMeters() const
+	{
+		return integratedElevationGainMeters;
+	}
+
+	double GetIntegratedElevationLossMeters() const
+	{
+		return integratedElevationLossMeters;
 	}
 };
