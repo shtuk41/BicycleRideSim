@@ -44,6 +44,12 @@ bool parse_gpx_file(std::string &filePath, trip &tr)
 			rec.longitude = std::atof(trkpt->first_attribute("lon")->value());
 			rec.elevation = std::atof(trkpt->first_node("ele")->value());
 			rec.timestamp = trkpt->first_node("time")->value();
+			auto extensions = trkpt->first_node("extensions");
+			
+			if (extensions)
+			{
+				rec.temperature = std::atof(extensions->first_node("gpxtpx:TrackPointExtension")->first_node("gpxtpx:atemp")->value());
+			}
 
 			if (prev_time.compare("start") != 0)
 			{
