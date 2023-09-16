@@ -81,7 +81,6 @@ bool parse_gpx_file(std::string &filePath, trip &tr)
 			prev_latitude = rec.latitude;
 			prev_longitude = rec.longitude;
 
-
 			tr.points.push_back(rec);
 		}
 	}

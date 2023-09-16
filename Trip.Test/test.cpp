@@ -7,7 +7,7 @@ TEST(TestCaseName, TripParsingTest_GreatWeatherRide)
 {
 	trip _trip;
 
-	std::string pathToGpxFile = "C:\\Files\\BicycleRideSim\\gpx\\Great_Weather_Ride.gpx";
+	std::string pathToGpxFile = "..\\gpx\\Great_Weather_Ride.gpx";
 
 	if (!parse_gpx_file(pathToGpxFile, _trip))
 	{
@@ -29,7 +29,7 @@ TEST(TestCaseName, TripParsingTest_EveningWalk)
 {
 	trip _trip;
 
-	std::string pathToGpxFile = "C:\\Files\\BicycleRideSim\\gpx\\Evening_Walk.gpx";
+	std::string pathToGpxFile = "..\\gpx\\Evening_Walk.gpx";
 
 	if (!parse_gpx_file(pathToGpxFile, _trip))
 	{
